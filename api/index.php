@@ -32,20 +32,9 @@ if ($server == "GET") {
     } else {
         echo "Error: data not deleted";
     }
-
-} else if ($server == "PUT") {
-    $myEntireBody = file_get_contents('php://input');
-    $myBody = json_decode($myEntireBody);
-    $id = $myBody->id;
-    $name = $myBody->name;
-    $email = $myBody->email;
-    $address = $myBody->address;
-    $sql = "UPDATE users SET name = '$name', email = '$email', address = '$address' WHERE id = $id";
-    if (mysqli_query($conn, $sql)) {
-        echo "User updated successfully";
-    } else {
-        echo "Error: data not updated";
-    }
-} else {
+   
+}else if($server=="PUT"){
+    echo "Update data";
+}else{
     echo "Invalid request";
 }

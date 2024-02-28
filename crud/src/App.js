@@ -1,13 +1,16 @@
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import RouterComponent from "./RouterComponent";
 
 function App() {
+  const users = "React Users";
   return (
-    <div>
+    <React.Fragment>
       <Header />
-      <h1>User Record</h1>
+      <RouterComponent />
       <Footer />
-    </div>
+    </React.Fragment>
   );
 }
 

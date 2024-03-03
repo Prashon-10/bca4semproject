@@ -3,14 +3,24 @@ import Header from "./Header";
 import Footer from "./Footer";
 import RouterComponent from "./RouterComponent";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 function App() {
   const users = "React Users";
   return (
-    <React.Fragment>
-      <Header />
-      <RouterComponent />
-      <Footer />
-    </React.Fragment>
+    <Container fluid="md">
+      <Row>
+        <Col lg={12} md={12} xs={12}>
+          <Header />
+          <RouterComponent />
+          <Footer />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

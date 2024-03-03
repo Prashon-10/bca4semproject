@@ -1,6 +1,8 @@
 <?php
 require_once "connection.php";
 
+header("Access-Control-Allow-Origin: *");
+
 $server = $_SERVER['REQUEST_METHOD'];
 
 function getUser()
@@ -32,9 +34,9 @@ if ($server == "GET") {
     } else {
         echo "Error: data not deleted";
     }
-   
-}else if($server=="PUT"){
+
+} else if ($server == "PUT") {
     echo "Update data";
-}else{
+} else {
     echo "Invalid request";
 }

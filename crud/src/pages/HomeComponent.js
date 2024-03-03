@@ -1,15 +1,21 @@
 import { useEffect } from "react";
+import axios from "axios";
 import Table from "react-bootstrap/Table";
 
 function HomeComponent() {
   useEffect(() => {
-
+    axios
+      .get("http://localhost/bca4semproject/api/")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
-
 
   return (
     <>
-
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -19,14 +25,7 @@ function HomeComponent() {
             <th>Address</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Hermit Hamilton</td>
-            <td>Hermithamilooutlook.com</td>
-            <td>England</td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </Table>
     </>
   );

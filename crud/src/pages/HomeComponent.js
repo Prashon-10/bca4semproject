@@ -11,7 +11,7 @@ function HomeComponent() {
   }, []);
 
   const deleteData = (id) => {
-    data = {
+    const data = {
       id: id
     }
     axios.delete("http://localhost/bca4semproject/api/", data).then((response) => {

@@ -3,6 +3,7 @@ import HomeComponent from "./pages/HomeComponent";
 import AboutComponent from "./pages/AboutComponent";
 import AddStudentComponent from "./pages/AddStudentComponent";
 
+
 function RouterComponent() {
   return (
     <div>

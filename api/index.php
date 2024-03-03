@@ -1,7 +1,8 @@
 <?php
 require_once "connection.php";
-
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
 $server = $_SERVER['REQUEST_METHOD'];
 
@@ -15,9 +16,10 @@ function getUser()
 if ($server == "GET") {
     getUser();
 } else if ($server == "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
+    $data=json_decode(file_get_contents('php://input',true));
+    $name = $data['name'];
+    $email = $data['email'];
+    $address = $data['address'];
     $sql = "INSERT INTO users (name, email, address) VALUES ('$name', '$email', '$address')";
     if (mysqli_query($conn, $sql)) {
         echo "User added successfully";
@@ -36,7 +38,18 @@ if ($server == "GET") {
     }
 
 } else if ($server == "PUT") {
-    echo "Update data";
+    $myEntireBody = file_get_contents('php://input');
+    $myBody = json_decode($myEntireBody);
+    $id = $myBody->id;
+    $name = $myBody->name;
+    $address = $myBody->address;
+    $sql = "UPDATE users SET name='$name', address='$address' WHERE id=$id";
+    if (mysqli_query($conn, $sql)) {
+        echo "User updated successfully";
+    } else {
+        echo "Error: data not updated";
+    }
+
 } else {
     echo "Invalid request";
 }
